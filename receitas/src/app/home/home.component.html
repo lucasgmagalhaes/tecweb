@@ -1,14 +1,5 @@
 <div class="row">
-  <div class="col-md-4 col-sm-12">
-    <app-produto-card (click)="exibirModal()"></app-produto-card>
+  <div *ngFor="let receita of receitas" class="col-md-4 col-sm-12">
+    <app-produto-card [receita]="receita"></app-produto-card>
   </div>
-
-  <div class="col-md-4 col-sm-12">
-    <app-produto-card></app-produto-card>
-  </div>
-
-  <div class="col-md-4 col-sm-12">
-    <app-produto-card></app-produto-card>
-  </div>
-
 </div>

@@ -7,8 +7,9 @@ import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { CadastroReceitaComponent } from './cadastro-receita/cadastro-receita.component';
 import { ProdutoCardComponent } from './produto-card/produto-card.component';
-import { ProdutoDetalheComponent } from './produto-detalhe/produto-detalhe.component';
 
+import { HttpClientModule } from '@angular/common/http';
+import { ReceitaDetalheComponent } from './receita-detalhe/receita-detalhe.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,11 +17,12 @@ import { ProdutoDetalheComponent } from './produto-detalhe/produto-detalhe.compo
     HeaderComponent,
     CadastroReceitaComponent,
     ProdutoCardComponent,
-    ProdutoDetalheComponent
+    ReceitaDetalheComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

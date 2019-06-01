@@ -1,0 +1,14 @@
+D:\git\tecweb\tecweb\receitas\api\bin\Debug\netcoreapp2.2\api.deps.json
+D:\git\tecweb\tecweb\receitas\api\bin\Debug\netcoreapp2.2\api.runtimeconfig.json
+D:\git\tecweb\tecweb\receitas\api\bin\Debug\netcoreapp2.2\api.runtimeconfig.dev.json
+D:\git\tecweb\tecweb\receitas\api\bin\Debug\netcoreapp2.2\api.dll
+D:\git\tecweb\tecweb\receitas\api\bin\Debug\netcoreapp2.2\api.pdb
+D:\git\tecweb\tecweb\receitas\api\obj\Debug\netcoreapp2.2\api.csprojAssemblyReference.cache
+D:\git\tecweb\tecweb\receitas\api\obj\Debug\netcoreapp2.2\api.csproj.CoreCompileInputs.cache
+D:\git\tecweb\tecweb\receitas\api\obj\Debug\netcoreapp2.2\api.RazorAssemblyInfo.cache
+D:\git\tecweb\tecweb\receitas\api\obj\Debug\netcoreapp2.2\api.RazorAssemblyInfo.cs
+D:\git\tecweb\tecweb\receitas\api\obj\Debug\netcoreapp2.2\api.AssemblyInfoInputs.cache
+D:\git\tecweb\tecweb\receitas\api\obj\Debug\netcoreapp2.2\api.AssemblyInfo.cs
+D:\git\tecweb\tecweb\receitas\api\obj\Debug\netcoreapp2.2\api.RazorTargetAssemblyInfo.cache
+D:\git\tecweb\tecweb\receitas\api\obj\Debug\netcoreapp2.2\api.dll
+D:\git\tecweb\tecweb\receitas\api\obj\Debug\netcoreapp2.2\api.pdb

@@ -1,14 +1,13 @@
-<div class="card" data-toggle="modal" data-target="#modal1">
-  <img class="card-img-top" src="../../assets/cuscus.jpg" alt="Imagem de capa do card">
+<div class="card">
+  <img class="card-img-top" [src]="receita?.imgUrl" alt="Imagem de capa do card">
   <div class="card-body">
-    <h5 class="card-title">Cuscuz da Vovozinha</h5>
+    <h5 class="card-title">{{receita?.nome}}</h5>
     <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Disabled tooltip">
       <span>
-        <i class="fas fa-star"></i>
-        <i class="far fa-star"></i>
-        10
+        <i class="fas fa-star" (click)="addVoto()"></i>
+        {{receita?.votos}}
       </span>
     </span>
-    <a href="#" class="btn btn-primary float-right">Abrir</a>
+    <a href="#" class="btn btn-primary float-right" [routerLink]="['/receita-detalhe', receita.id]">Abrir</a>
   </div>
 </div>

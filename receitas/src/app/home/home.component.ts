@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ReceitaService, Receita } from '../service/receita.service';
 
 @Component({
   selector: 'app-home',
@@ -7,14 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  exibir: boolean;
-  constructor() { }
+  receitas: Receita[] = [];
+
+  constructor(private receitaService: ReceitaService) {
+    this.receitaService.buscar().then(receitas => this.receitas = receitas);
+  }
 
   ngOnInit() {
   }
 
-  exibirModal() {
-    this.exibir = this.exibir ? false : true;
-  }
 
 }

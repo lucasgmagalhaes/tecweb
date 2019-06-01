@@ -12,43 +12,75 @@ namespace api
 
     public ReceitaService()
     {
-      string connetionString = "Data Source=ServerName;Initial Catalog=DatabaseName;User ID=UserName;Password=Password";
+      string connetionString = "Server=localhost;Database=receitas;User ID=sa;Password=senha;";
       connection = new SqlConnection(connetionString);
+
+      OpenCon();
+      ExecuteNoQuery("if not exists (select * from sysobjects where name='Receita' and xtype='U') " +
+        "create table Receita(" +
+        "Id BIGINT IDENTITY(1,1)," +
+        "Nome varchar(50) not null," +
+        "Descricao TEXT not null," +
+        "ImgUrl TEXT NOT NULL," +
+        "Votos INT NOT NULL" +
+        ") ");
     }
 
-    private Receita ConverterDataReaderToReceita(SqlDataReader reader)
+    private Receita ConverterDataReaderToReceita(ref SqlDataReader reader)
     {
       return new Receita()
       {
-        Id = (long)reader.GetValue(0),
-        Descricao = (string)reader.GetValue(1),
-        ImgUrl = (string)reader.GetValue(2),
-        Votos = (int)reader.GetValue(3)
+        Id = reader.GetInt64(0),
+        Nome = reader.GetString(1),
+        Descricao = reader.GetString(2),
+        ImgUrl = reader.GetString(3),
+        Votos = reader.GetInt32(4)
       };
     }
 
-    private SqlDataReader CriarReader(string sql)
+    ~ReceitaService()
     {
-      connection.Open();
+      connection.Close();
+      connection.Dispose();
+    }
+
+    private void OpenCon()
+    {
+      try
+      {
+        connection.Open();
+      }
+      catch
+      {
+        connection.Close();
+        connection.Open();
+      }
+    }
+
+    private SqlDataReader ExecuteReader(string sql)
+    {
+      OpenCon();
       SqlCommand command = new SqlCommand(sql, connection);
-      return command.ExecuteReader();
+      SqlDataReader reader = command.ExecuteReader();
+      return reader;
     }
 
     private void ExecuteNoQuery(string sql)
     {
-      connection.Open();
+      OpenCon();
       SqlCommand command = new SqlCommand(sql, connection);
       command.ExecuteNonQuery();
-    } 
+      connection.Close();
+    }
 
     public List<Receita> Buscar()
     {
-      SqlDataReader dataReader = CriarReader("SELECT * FROM RECEITAS");
+      SqlDataReader dataReader = ExecuteReader("SELECT * FROM RECEITA");
       List<Receita> receitas = new List<Receita>();
 
       while (dataReader.Read())
       {
-        receitas.Add(ConverterDataReaderToReceita(dataReader));
+        receitas.Add(ConverterDataReaderToReceita(ref dataReader));
       }
 
       dataReader.Close();
@@ -58,13 +90,42 @@ namespace api
 
     public Receita Buscar(long id)
     {
-      SqlDataReader reader = CriarReader($"SELECT * FROM RECEITAS WHERE ID = {id}");
-      return ConverterDataReaderToReceita(reader);
+      SqlDataReader reader = ExecuteReader($"SELECT * FROM RECEITA WHERE ID = {id}");
+      Receita receita = null;
+
+      if (reader.Read())
+      {
+        receita = ConverterDataReaderToReceita(ref reader);
+      }
+
+      connection.Close();
+      reader.Close();
+
+      return receita;
+    }
+
+    public void Atualizar(Receita receita)
+    {
+      ExecuteNoQuery($"UPDATE RECEITA SET " +
+        $"VOTOS = {receita.Votos}, DESCRICAO = '{receita.Descricao}', IMGURL = '{receita.ImgUrl}', NOME = '{receita.Nome}'" +
+        $" WHERE ID = {receita.Id}");
     }
 
     public void AtualizarVotos(Receita receita)
     {
-      ExecuteNoQuery($"UPDATE RECEITAS SET VOTOS = {receita.Votos} WHERE ID = {receita.Id}");
+      ExecuteNoQuery($"UPDATE RECEITA SET VOTOS = {receita.Votos} WHERE ID = {receita.Id}");
+    }
+
+    public void CriarReceita(Receita receita)
+    {
+      ExecuteReader($"" +
+         $"INSERT INTO RECEITA(DESCRICAO, IMGURL, VOTOS, NOME) " +
+         $"VALUES('{receita.Descricao}', '{receita.ImgUrl}', {receita.Votos}, '{receita.Nome}')");
+    }
+
+    public void DeletarReceita(long id)
+    {
+      ExecuteNoQuery($"DELETE FROM RECEITA WHERE ID = {id}");
     }
   }
 }

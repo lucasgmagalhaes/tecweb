@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\git\\tecweb\\receitas\\api\\api\\api.csproj": {}
+    "D:\\git\\tecweb\\tecweb\\receitas\\api\\api.csproj": {}
   },
   "projects": {
-    "D:\\git\\tecweb\\receitas\\api\\api\\api.csproj": {
+    "D:\\git\\tecweb\\tecweb\\receitas\\api\\api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\git\\tecweb\\receitas\\api\\api\\api.csproj",
+        "projectUniqueName": "D:\\git\\tecweb\\tecweb\\receitas\\api\\api.csproj",
         "projectName": "api",
-        "projectPath": "D:\\git\\tecweb\\receitas\\api\\api\\api.csproj",
+        "projectPath": "D:\\git\\tecweb\\tecweb\\receitas\\api\\api.csproj",
         "packagesPath": "C:\\Users\\Lucas\\.nuget\\packages\\",
-        "outputPath": "D:\\git\\tecweb\\receitas\\api\\api\\obj\\",
+        "outputPath": "D:\\git\\tecweb\\tecweb\\receitas\\api\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

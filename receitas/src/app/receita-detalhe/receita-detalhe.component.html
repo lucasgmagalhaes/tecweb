@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col-md-5 col-sm-12">
+    <img [src]="receita?.imgUrl" alt="">
+  </div>
+
+  <div class="col-md-7 col-sm-12">
+    <div class="form-novo">
+      <div class="form-group row">
+        <label for="inputPassword" class="col-sm-2 col-form-label">Título</label>
+        <div class="col-sm-10">
+          <input type="text" id="txtnome" class="form-control" [value]="receita?.nome" readonly>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="inputPassword" class="col-sm-2 col-form-label">Descrição da receita</label>
+        <div class="col-sm-10">
+          <textarea class="form-control" id="txtdescricao" [value]="receita?.descricao" readonly rows="3"></textarea>
+        </div>
+      </div>
+
+      <div clas="form-group">
+        <button class="btn btn-primary float-right" routerLink="/">Voltar</button>
+      </div>
+
+    </div>
+  </div>
+
+</div>
